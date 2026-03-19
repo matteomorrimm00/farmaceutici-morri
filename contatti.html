@@ -439,98 +439,20 @@ footer { background: #141E28; padding: 56px 52px 28px; }
 
 /* ─── REVEAL ─── */
 .reveal { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
 
-/* ─── RESPONSIVE MOBILE ─── */
-@media (max-width: 768px) {
-
-  nav { padding: 0 20px; height: 58px; }
-  .nav-links { display: none; }
-  .nav-right .btn-ghost { display: none; }
-  .btn-solid { padding: 0 14px; font-size: 12px; height: 34px; }
-  .logo-name { font-size: 17px; }
-
-  .hero { padding: 52px 24px 72px; }
-  .hero-title { font-size: 34px; }
-  .hero-sub { font-size: 14px; }
-
-  .wrap { padding: 0 20px; }
-  .sec { padding: 48px 0; }
-  .sec-title { font-size: 28px !important; }
-
-  /* Form + Info */
-  .contact-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
-  .form-card { padding: 24px 20px; }
-  .form-row { grid-template-columns: 1fr !important; }
-
-  /* Spedizioni */
-  .spedizioni-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-
-  /* Pagamenti */
-  .pagamenti-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
-  .reso-banner { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
-  .reso-left { flex-direction: column; text-align: center; }
-
-  /* Footer */
-  footer { padding: 40px 20px 20px; }
-  .foot-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
-  .foot-bottom { flex-direction: column; gap: 8px; text-align: center; }
-}
-
-@media (max-width: 1024px) and (min-width: 769px) {
-  nav { padding: 0 24px; }
-  .wrap { padding: 0 24px; }
-  .contact-grid { gap: 28px !important; }
-  .pagamenti-grid { grid-template-columns: repeat(3, 1fr) !important; }
-  .foot-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
-}
-
-  /* Hamburger menu */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 4px;
-    background: none;
-    border: none;
-  }
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-    transition: all .25s;
-  }
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 58px;
-    left: 0; right: 0;
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
-    z-index: 99;
-    box-shadow: var(--shadow-md);
-  }
-  .mobile-menu.open { display: block; }
-  .mobile-menu a {
-    display: block;
-    padding: 13px 24px;
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--text-2);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    transition: all .18s;
-  }
-  .mobile-menu a:last-child { border-bottom: none; }
-  .mobile-menu a:hover { color: var(--blue); background: var(--blue-bg); }
-  .mobile-menu .active { color: var(--blue); font-weight: 500; }
-
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+  .mobile-nav { display: none; position: fixed; top: 66px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); z-index: 199; flex-direction: column; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { display: block; padding: 14px 24px; font-size: 15px; color: var(--text-2); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .mobile-nav a:last-child { border-bottom: none; }
+  .mobile-nav .active { color: var(--blue); font-weight: 500; }
   @media (max-width: 768px) {
-    .hamburger { display: flex; }
     .nav-links { display: none; }
+    .btn-ghost { display: none; }
+    .hamburger { display: flex; }
+    .mobile-nav { top: 58px; }
   }
 
 </style>
@@ -539,7 +461,7 @@ footer { background: #141E28; padding: 56px 52px 28px; }
 
 <!-- NAVBAR -->
 <nav>
-  <a class="logo" href="farmaceutici-morri-v5.html">
+  <a class="logo" href="index.html">
     <span class="logo-name">Farmaceutici Morri</span>
     <span class="logo-tag">Salute &amp; Benessere</span>
   </a>
@@ -548,18 +470,15 @@ footer { background: #141E28; padding: 56px 52px 28px; }
     <li><a href="#">Catalogo</a></li>
     <li><a href="#">Offerte</a></li>
     <li><a href="chisiamo.html">Chi siamo</a></li>
-    <li><a href="contatti.html" class="active">Contatti</a></li>
+    <li><a href="#" class="active">Contatti</a></li>
   </ul>
   <div class="nav-right">
     <button class="btn-ghost">Accedi</button>
     <button class="btn-solid">Carrello (0)</button>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Apri menu"><span></span><span></span><span></span></button>
   </div>
-
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-nav" id="mobileNav">
   <a href="index.html">Home</a>
   <a href="#">Catalogo</a>
   <a href="#">Offerte</a>
@@ -660,7 +579,7 @@ footer { background: #141E28; padding: 56px 52px 28px; }
             <div class="info-icon">✉️</div>
             <div>
               <div class="info-label">Email</div>
-              <div class="info-value"><a href="/cdn-cgi/l/email-protection#a0c9cec6cfe0c6c1d2cdc1c3c5d5d4c9c3c9cdcfd2d2c98ec3cfcd"><span class="__cf_email__" data-cfemail="97fef9f1f8d7f1f6e5faf6f4f2e2e3fef4fefaf8e5e5feb9f4f8fa">[email&#160;protected]</span></a></div>
+              <div class="info-value"><a href="/cdn-cgi/l/email-protection#b9d0d7dfd6f9dfd8cbd4d8dadccccdd0dad0d4d6cbcbd097dad6d4"><span class="__cf_email__" data-cfemail="95fcfbf3fad5f3f4e7f8f4f6f0e0e1fcf6fcf8fae7e7fcbbf6faf8">[email&#160;protected]</span></a></div>
             </div>
           </div>
         </div>
@@ -848,7 +767,7 @@ footer { background: #141E28; padding: 56px 52px 28px; }
       <div class="foot-contact">
         <div>Via Vitalis di Giovanni, 13 — 47899 RSM</div>
         <div><a href="tel:054990309">0549 905309</a></div>
-        <div><a href="/cdn-cgi/l/email-protection#ff96919990bf999e8d929e9c9a8a8b969c9692908d8d96d19c9092"><span class="__cf_email__" data-cfemail="d8b1b6beb798beb9aab5b9bbbdadacb1bbb1b5b7aaaab1f6bbb7b5">[email&#160;protected]</span></a></div>
+        <div><a href="/cdn-cgi/l/email-protection#ff96919990bf999e8d929e9c9a8a8b969c9692908d8d96d19c9092"><span class="__cf_email__" data-cfemail="a2cbccc4cde2c4c3d0cfc3c1c7d7d6cbc1cbcfcdd0d0cb8cc1cdcf">[email&#160;protected]</span></a></div>
       </div>
     </div>
     <div>
@@ -884,16 +803,3 @@ footer { background: #141E28; padding: 56px 52px 28px; }
   <div class="foot-bottom">
     <span>© 2025 Farmaceutici Morri S.p.A. — COE SM03673 — Licenza e-commerce nr. 817 del 18/12/2020</span>
     <span><a href="#">Privacy</a>&nbsp;·&nb
-
-<script>
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
-document.addEventListener('click', function(e) {
-  var menu = document.getElementById('mobileMenu');
-  var btn = document.querySelector('.hamburger');
-  if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-    menu.classList.remove('open');
-  }
-});
-</script>

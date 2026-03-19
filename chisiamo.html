@@ -546,115 +546,20 @@ footer {
 
 /* ─── REVEAL ─── */
 .reveal { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
 
-/* ─── RESPONSIVE MOBILE ─── */
-@media (max-width: 768px) {
-
-  nav { padding: 0 20px; height: 58px; }
-  .nav-links { display: none; }
-  .nav-right .btn-ghost { display: none; }
-  .btn-solid { padding: 0 14px; font-size: 12px; height: 34px; }
-  .logo-name { font-size: 17px; }
-
-  .hero { padding: 52px 24px 72px; }
-  .hero-title { font-size: 36px; }
-  .hero-sub { font-size: 14px; }
-
-  .wrap { padding: 0 20px; }
-  .sec { padding: 48px 0; }
-  .sec-title { font-size: 28px !important; }
-
-  /* Storia */
-  .storia-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-  .storia-img-placeholder { height: 260px; }
-  .storia-img { height: 260px; }
-
-  /* Numeri */
-  .numeri-strip { padding: 36px 20px; }
-  .numeri-grid { grid-template-columns: 1fr 1fr !important; }
-  .numero-val { font-size: 36px; }
-
-  /* Valori */
-  .valori-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
-
-  /* Perché */
-  .perche-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-  .perche-quote { padding: 28px 24px; }
-  .perche-quote-text { font-size: 20px; }
-
-  /* Fondatore */
-  .fondatore-strip { padding: 36px 20px; }
-  .fondatore-inner { flex-direction: column; gap: 16px; padding: 24px 20px; }
-
-  /* Team */
-  .team-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-
-  /* Contatti */
-  .contatti-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-
-  /* Footer */
-  footer { padding: 40px 20px 20px; }
-  .foot-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
-  .foot-bottom { flex-direction: column; gap: 8px; text-align: center; }
-}
-
-@media (max-width: 1024px) and (min-width: 769px) {
-  nav { padding: 0 24px; }
-  .wrap { padding: 0 24px; }
-  .storia-grid { gap: 40px !important; }
-  .valori-grid { grid-template-columns: 1fr 1fr !important; }
-  .team-grid { grid-template-columns: 1fr 1fr 1fr !important; }
-  .numeri-grid { grid-template-columns: repeat(4, 1fr) !important; }
-  .foot-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
-}
-
-  /* Hamburger menu */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 4px;
-    background: none;
-    border: none;
-  }
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-    transition: all .25s;
-  }
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 58px;
-    left: 0; right: 0;
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
-    z-index: 99;
-    box-shadow: var(--shadow-md);
-  }
-  .mobile-menu.open { display: block; }
-  .mobile-menu a {
-    display: block;
-    padding: 13px 24px;
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--text-2);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    transition: all .18s;
-  }
-  .mobile-menu a:last-child { border-bottom: none; }
-  .mobile-menu a:hover { color: var(--blue); background: var(--blue-bg); }
-  .mobile-menu .active { color: var(--blue); font-weight: 500; }
-
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+  .mobile-nav { display: none; position: fixed; top: 66px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); z-index: 199; flex-direction: column; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { display: block; padding: 14px 24px; font-size: 15px; color: var(--text-2); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .mobile-nav a:last-child { border-bottom: none; }
+  .mobile-nav .active { color: var(--blue); font-weight: 500; }
   @media (max-width: 768px) {
-    .hamburger { display: flex; }
     .nav-links { display: none; }
+    .btn-ghost { display: none; }
+    .hamburger { display: flex; }
+    .mobile-nav { top: 58px; }
   }
 
 </style>
@@ -663,7 +568,7 @@ footer {
 
 <!-- NAVBAR -->
 <nav>
-  <a class="logo" href="farmaceutici-morri-v5.html">
+  <a class="logo" href="index.html">
     <span class="logo-name">Farmaceutici Morri</span>
     <span class="logo-tag">Salute &amp; Benessere</span>
   </a>
@@ -677,13 +582,10 @@ footer {
   <div class="nav-right">
     <button class="btn-ghost">Accedi</button>
     <button class="btn-solid">Carrello (0)</button>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Apri menu"><span></span><span></span><span></span></button>
   </div>
-
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-nav" id="mobileNav">
   <a href="index.html">Home</a>
   <a href="#">Catalogo</a>
   <a href="#">Offerte</a>
@@ -919,7 +821,7 @@ footer {
           <div class="contatti-icon">✉️</div>
           <div>
             <div class="contatti-label">Email</div>
-            <div class="contatti-value"><a href="/cdn-cgi/l/email-protection#f29b9c949db29493809f93919787869b919b9f9d80809bdc919d9f"><span class="__cf_email__" data-cfemail="f990979f96b99f988b94989a9c8c8d909a9094968b8b90d79a9694">[email&#160;protected]</span></a></div>
+            <div class="contatti-value"><a href="/cdn-cgi/l/email-protection#d9b0b7bfb699bfb8abb4b8babcacadb0bab0b4b6ababb0f7bab6b4"><span class="__cf_email__" data-cfemail="51383f373e113730233c30323424253832383c3e2323387f323e3c">[email&#160;protected]</span></a></div>
           </div>
         </div>
       </div>
@@ -972,7 +874,7 @@ footer {
       <div class="foot-contact">
         <div>Via Vitalis di Giovanni, 13 — 47899 RSM</div>
         <div><a href="tel:054990309">0549 905309</a></div>
-        <div><a href="/cdn-cgi/l/email-protection#b7ded9d1d8f7d1d6c5dad6d4d2c2c3ded4dedad8c5c5de99d4d8da"><span class="__cf_email__" data-cfemail="71181f171e311710031c10121404051812181c1e0303185f121e1c">[email&#160;protected]</span></a></div>
+        <div><a href="/cdn-cgi/l/email-protection#87eee9e1e8c7e1e6f5eae6e4e2f2f3eee4eeeae8f5f5eea9e4e8ea"><span class="__cf_email__" data-cfemail="523b3c343d123433203f33313727263b313b3f3d20203b7c313d3f">[email&#160;protected]</span></a></div>
       </div>
     </div>
     <div>
@@ -991,7 +893,7 @@ footer {
         <li><a href="#">Chi siamo</a></li>
         <li><a href="#">Offerte</a></li>
         <li><a href="#">Blog</a></li>
-        <li><a href="#">Contatti</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
       </ul>
     </div>
     <div>
@@ -1008,16 +910,3 @@ footer {
   <div class="foot-bottom">
     <span>© 2025 Farmaceutici Morri S.p.A. — COE SM03673 — Licenza e-commerce nr. 817 del 18/12/2020</span>
     <span><a href="#">Privacy</a>&nbsp;·&nb
-
-<script>
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
-document.addEventListener('click', function(e) {
-  var menu = document.getElementById('mobileMenu');
-  var btn = document.querySelector('.hamburger');
-  if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
-    menu.classList.remove('open');
-  }
-});
-</script>
