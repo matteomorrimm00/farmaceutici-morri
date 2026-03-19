@@ -607,6 +607,56 @@ footer {
   .numeri-grid { grid-template-columns: repeat(4, 1fr) !important; }
   .foot-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
 }
+
+  /* Hamburger menu */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all .25s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 58px;
+    left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    z-index: 99;
+    box-shadow: var(--shadow-md);
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a {
+    display: block;
+    padding: 13px 24px;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-2);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: all .18s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--blue); background: var(--blue-bg); }
+  .mobile-menu .active { color: var(--blue); font-weight: 500; }
+
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-links { display: none; }
+  }
+
 </style>
 </head>
 <body>
@@ -628,7 +678,18 @@ footer {
     <button class="btn-ghost">Accedi</button>
     <button class="btn-solid">Carrello (0)</button>
   </div>
+
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="#">Catalogo</a>
+  <a href="#">Offerte</a>
+  <a href="chisiamo.html" class="active">Chi siamo</a>
+  <a href="contatti.html">Contatti</a>
+</div>
 
 <!-- HERO -->
 <div class="hero reveal in">
