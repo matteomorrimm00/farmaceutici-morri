@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatti — Farmaceutici Morri</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue:      #3A7FBD;
+  --blue-mid:  #5599CC;
+  --blue-lt:   #A8CBE8;
+  --blue-bg:   #E8F2F9;
+  --page-bg:   #F2F6FA;
+  --white:     #FFFFFF;
+  --text:      #192838;
+  --text-2:    #526475;
+  --text-3:    #98ADB8;
+  --border:    #DDE8F0;
+  --shadow-sm: 0 2px 12px rgba(25,40,56,0.06);
+  --shadow-md: 0 6px 28px rgba(25,40,56,0.09);
+  --r:         14px;
+  --font-s: 'DM Sans', sans-serif;
+  --font-d: 'Cormorant Garamond', serif;
+}
+
+body {
+  font-family: var(--font-s);
+  background: var(--page-bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* ─── NAVBAR ─── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  height: 66px;
+  padding: 0 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.logo { text-decoration: none; }
+.logo-name { font-family: var(--font-d); font-size: 21px; font-weight: 500; color: var(--text); letter-spacing: 0.01em; line-height: 1; display: block; }
+.logo-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-mid); display: block; margin-top: 3px; }
+.nav-links { display: flex; gap: 2px; list-style: none; }
+.nav-links a { font-size: 13.5px; font-weight: 400; color: var(--text-2); text-decoration: none; padding: 7px 13px; border-radius: 8px; transition: all .18s; }
+.nav-links a:hover { color: var(--blue); background: var(--blue-bg); }
+.nav-links .active { color: var(--blue); font-weight: 500; }
+.nav-right { display: flex; gap: 10px; align-items: center; }
+.btn-ghost { height: 38px; padding: 0 18px; background: transparent; border: 1px solid var(--border); border-radius: 9px; font-family: var(--font-s); font-size: 13px; font-weight: 500; color: var(--text-2); cursor: pointer; transition: all .18s; }
+.btn-ghost:hover { border-color: var(--blue-lt); color: var(--blue); }
+.btn-solid { height: 38px; padding: 0 20px; background: var(--blue); border: none; border-radius: 9px; font-family: var(--font-s); font-size: 13px; font-weight: 500; color: white; cursor: pointer; transition: all .18s; }
+.btn-solid:hover { background: #2e6fa8; }
+
+/* ─── HERO ─── */
+.hero {
+  background: linear-gradient(160deg, #1d4e7a 0%, #2a6aaa 45%, #3d89c8 100%);
+  padding: 72px 52px 90px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -150px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--page-bg));
+  pointer-events: none;
+}
+.hero-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 20px;
+}
+.hero-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; }
+.hero-breadcrumb a:hover { color: rgba(255,255,255,0.75); }
+.hero-breadcrumb span { color: rgba(255,255,255,0.25); }
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 14px;
+}
+.hero-label::before { content: ''; width: 18px; height: 1px; background: rgba(255,255,255,0.3); }
+.hero-label::after  { content: ''; width: 18px; height: 1px; background: rgba(255,255,255,0.3); }
+.hero-title {
+  font-family: var(--font-d);
+  font-size: 52px;
+  font-weight: 400;
+  color: white;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+.hero-title em { font-style: italic; color: rgba(255,255,255,0.65); }
+.hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── SHARED ─── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 52px; }
+.sec { padding: 72px 0; }
+.sec-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-mid); margin-bottom: 8px; }
+.sec-title { font-family: var(--font-d); font-size: 38px; font-weight: 400; color: var(--text); line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 36px; }
+.sec-title em { font-style: italic; color: var(--blue); }
+
+/* ─── FORM + INFO ─── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Form */
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 36px;
+  box-shadow: var(--shadow-sm);
+}
+.form-title {
+  font-family: var(--font-d);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.form-sub {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.form-group.full { grid-column: 1 / -1; }
+label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+  letter-spacing: 0.03em;
+}
+input, textarea, select {
+  font-family: var(--font-s);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--page-bg);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 11px 14px;
+  transition: all .18s;
+  outline: none;
+  resize: none;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--blue-lt);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(58,127,189,0.08);
+}
+input::placeholder, textarea::placeholder { color: var(--text-3); }
+textarea { height: 120px; }
+.btn-submit {
+  width: 100%;
+  height: 46px;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-s);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-submit:hover { background: #2e6fa8; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(58,127,189,0.25); }
+.form-note {
+  font-size: 11px;
+  color: var(--text-3);
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* Info card */
+.info-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.info-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 24px 26px;
+  box-shadow: var(--shadow-sm);
+}
+.info-card-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  margin-bottom: 16px;
+}
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.info-row:last-child { border-bottom: none; padding-bottom: 0; }
+.info-icon {
+  width: 34px; height: 34px;
+  background: var(--blue-bg);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.info-label { font-size: 11px; color: var(--text-3); margin-bottom: 2px; }
+.info-value { font-size: 13.5px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.info-value a { color: var(--text); text-decoration: none; }
+.info-value a:hover { color: var(--blue); }
+.orari-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 2px; }
+.orario-periodo { font-size: 10px; color: var(--text-3); margin-bottom: 1px; }
+.orario-ore { font-size: 13.5px; font-weight: 500; color: var(--text); }
+
+/* ─── SPEDIZIONI ─── */
+.spedizioni-bg {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.spedizioni-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.spedizioni-intro {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+.spedizioni-standard {
+  background: var(--blue-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.spedizioni-standard-label { font-size: 14px; font-weight: 500; color: var(--text); }
+.spedizioni-standard-price {
+  font-family: var(--font-d);
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--blue);
+}
+.spedizioni-free {
+  background: #EAF7EF;
+  border: 1px solid #B8E0C8;
+  border-radius: var(--r);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.spedizioni-free-icon { font-size: 20px; }
+.spedizioni-free-text { font-size: 13.5px; font-weight: 500; color: #2D7A4F; }
+.spedizioni-free-sub { font-size: 11px; color: #5A9E78; margin-top: 1px; }
+
+.supplementi-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.supplemento-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+}
+.supplemento-row:last-child { border-bottom: none; }
+.supplemento-zona {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--text);
+}
+.supplemento-zona-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--blue-lt);
+  flex-shrink: 0;
+}
+.supplemento-price {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+.spedizioni-note {
+  margin-top: 16px;
+  background: var(--page-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 12px;
+  color: var(--text-2);
+  line-height: 1.65;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.spedizioni-note-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+/* ─── PAGAMENTI ─── */
+.pagamenti-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+}
+.pagamento-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all .2s;
+}
+.pagamento-card:hover {
+  border-color: var(--blue-lt);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.pagamento-icon { font-size: 32px; margin-bottom: 12px; }
+.pagamento-name { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+.pagamento-desc { font-size: 12px; color: var(--text-2); line-height: 1.5; font-weight: 300; }
+.reso-banner {
+  background: linear-gradient(135deg, #1d4e7a 0%, #2a6aaa 100%);
+  border-radius: var(--r);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 16px;
+}
+.reso-left { display: flex; align-items: center; gap: 16px; }
+.reso-icon { font-size: 28px; }
+.reso-title { font-size: 16px; font-weight: 500; color: white; margin-bottom: 3px; }
+.reso-desc { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 300; }
+.reso-badge {
+  font-family: var(--font-d);
+  font-size: 36px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── FOOTER ─── */
+footer { background: #141E28; padding: 56px 52px 28px; }
+.foot-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.foot-brand-name { font-family: var(--font-d); font-size: 20px; font-weight: 500; color: white; display: block; }
+.foot-brand-tag { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-mid); display: block; margin: 3px 0 14px; }
+.foot-desc { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.7; margin-bottom: 16px; }
+.foot-contact { font-size: 12px; color: rgba(255,255,255,0.25); line-height: 2.2; }
+.foot-contact a { color: rgba(255,255,255,0.35); text-decoration: none; }
+.foot-col-title { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+.foot-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.foot-links a { font-size: 13px; color: rgba(255,255,255,0.25); text-decoration: none; transition: color .18s; }
+.foot-links a:hover { color: rgba(255,255,255,0.65); }
+.foot-bottom { max-width: 1100px; margin: 0 auto; padding-top: 22px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(255,255,255,0.16); }
+.foot-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; }
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a class="logo" href="farmaceutici-morri-v5.html">
+    <span class="logo-name">Farmaceutici Morri</span>
+    <span class="logo-tag">Salute &amp; Benessere</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="farmaceutici-morri-v5.html">Home</a></li>
+    <li><a href="#">Catalogo</a></li>
+    <li><a href="#">Offerte</a></li>
+    <li><a href="farmaceutici-morri-chisiamo.html">Chi siamo</a></li>
+    <li><a href="#" class="active">Contatti</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-ghost">Accedi</button>
+    <button class="btn-solid">Carrello (0)</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero reveal in">
+  <div class="hero-breadcrumb">
+    <a href="#">Home</a>
+    <span>/</span>
+    <span style="color:rgba(255,255,255,0.65)">Contatti</span>
+  </div>
+  <div class="hero-label">Siamo qui per te</div>
+  <h1 class="hero-title">Come possiamo <em>aiutarti?</em></h1>
+  <p class="hero-sub">Scrivici, chiamaci o vieni a trovarci. Rispondiamo dal lunedì al venerdì.</p>
+</div>
+
+<!-- FORM + INFO -->
+<div class="wrap">
+  <div class="sec reveal">
+    <div class="contact-grid">
+
+      <!-- Form -->
+      <div class="form-card">
+        <div class="form-title">Scrivici un messaggio</div>
+        <div class="form-sub">Ti risponderemo il prima possibile durante gli orari di assistenza.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" placeholder="Mario">
+          </div>
+          <div class="form-group">
+            <label for="cognome">Cognome *</label>
+            <input type="text" id="cognome" placeholder="Rossi">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" placeholder="mario.rossi@email.com">
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Telefono</label>
+          <input type="tel" id="telefono" placeholder="+39 ...">
+        </div>
+
+        <div class="form-group">
+          <label for="oggetto">Oggetto</label>
+          <select id="oggetto">
+            <option value="" disabled selected>Seleziona un argomento</option>
+            <option>Informazioni su un prodotto</option>
+            <option>Ordine in corso</option>
+            <option>Spedizioni e consegne</option>
+            <option>Reso e rimborso</option>
+            <option>Altro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="messaggio">Messaggio *</label>
+          <textarea id="messaggio" placeholder="Scrivi qui il tuo messaggio..."></textarea>
+        </div>
+
+        <button class="btn-submit">
+          <span>Invia messaggio</span>
+          <span>→</span>
+        </button>
+        <div class="form-note">
+          Inviando il modulo accetti la nostra <a href="#" style="color:var(--blue)">Privacy Policy</a>.<br>
+          I campi contrassegnati con * sono obbligatori.
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="info-stack">
+
+        <div class="info-card">
+          <div class="info-card-title">Dove siamo</div>
+          <div class="info-row">
+            <div class="info-icon">📍</div>
+            <div>
+              <div class="info-label">Indirizzo</div>
+              <div class="info-value">Via Vitalis di Giovanni, 13<br>47899 — Repubblica di San Marino</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">📞</div>
+            <div>
+              <div class="info-label">Telefono</div>
+              <div class="info-value"><a href="tel:054990309">0549 905309</a></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">✉️</div>
+            <div>
+              <div class="info-label">Email</div>
+              <div class="info-value"><a href="mailto:info@farmaceuticimorri.com">info@farmaceuticimorri.com</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title">Orari assistenza</div>
+          <div class="info-row">
+            <div class="info-icon">🗓️</div>
+            <div>
+              <div class="info-label">Giorni</div>
+              <div class="info-value">Lunedì — Venerdì</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🕐</div>
+            <div>
+              <div class="info-label">Orario</div>
+              <div class="orari-cols">
+                <div>
+                  <div class="orario-periodo">Mattina</div>
+                  <div class="orario-ore">8:30 — 13:00</div>
+                </div>
+                <div>
+                  <div class="orario-periodo">Pomeriggio</div>
+                  <div class="orario-ore">14:30 — 17:30</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title">Dati aziendali</div>
+          <div class="info-row">
+            <div class="info-icon">🏢</div>
+            <div>
+              <div class="info-label">Ragione sociale</div>
+              <div class="info-value">Farmaceutici Morri S.p.A.</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">📋</div>
+            <div>
+              <div class="info-label">COE</div>
+              <div class="info-value">SM03673</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🛒</div>
+            <div>
+              <div class="info-label">Licenza commercio elettronico</div>
+              <div class="info-value">Nr. 817 del 18/12/2020</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPEDIZIONI -->
+<div class="spedizioni-bg">
+  <div class="wrap">
+    <div class="sec reveal">
+      <div class="spedizioni-grid">
+        <div>
+          <div class="sec-label">Spedizioni</div>
+          <h2 class="sec-title" style="margin-bottom:16px">Costi e <em>modalità</em></h2>
+          <p class="spedizioni-intro">Il corriere convenzionato consegna la merce all'indirizzo indicato al momento dell'ordine. Inserisci sempre un numero di telefono per essere contattato in caso di necessità.</p>
+
+          <div class="spedizioni-standard">
+            <div>
+              <div class="spedizioni-standard-label">Spedizione standard</div>
+              <div style="font-size:12px;color:var(--text-2);margin-top:3px;">Corriere espresso in tutta Italia</div>
+            </div>
+            <div class="spedizioni-standard-price">€3,00</div>
+          </div>
+
+          <div class="spedizioni-free">
+            <div class="spedizioni-free-icon">🎁</div>
+            <div>
+              <div class="spedizioni-free-text">Spedizione gratuita</div>
+              <div class="spedizioni-free-sub">su tutti gli ordini superiori a €19,90</div>
+            </div>
+          </div>
+
+          <div class="spedizioni-note" style="margin-top:16px">
+            <div class="spedizioni-note-icon">ℹ️</div>
+            <div>Il costo di spedizione verrà mostrato chiaramente al momento del checkout, prima di completare l'ordine.</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="supplementi-title">Supplementi per zone specifiche</div>
+
+          <div class="supplemento-row">
+            <div class="supplemento-zona">
+              <div class="supplemento-zona-dot"></div>
+              Calabria
+            </div>
+            <div class="supplemento-price">+€6,00</div>
+          </div>
+          <div class="supplemento-row">
+            <div class="supplemento-zona">
+              <div class="supplemento-zona-dot"></div>
+              Sardegna
+            </div>
+            <div class="supplemento-price">+€6,00</div>
+          </div>
+          <div class="supplemento-row">
+            <div class="supplemento-zona">
+              <div class="supplemento-zona-dot"></div>
+              Sicilia
+            </div>
+            <div class="supplemento-price">+€6,00</div>
+          </div>
+          <div class="supplemento-row">
+            <div class="supplemento-zona">
+              <div class="supplemento-zona-dot"></div>
+              Venezia
+            </div>
+            <div class="supplemento-price">+€13,00</div>
+          </div>
+          <div class="supplemento-row">
+            <div class="supplemento-zona">
+              <div class="supplemento-zona-dot"></div>
+              Isole minori d'Italia
+            </div>
+            <div class="supplemento-price">+€13,00</div>
+          </div>
+
+          <div class="spedizioni-note">
+            <div class="spedizioni-note-icon">⚠️</div>
+            <div>Il supplemento si aggiunge al costo standard di spedizione (€3,00 + supplemento zona). Viene applicato automaticamente al checkout in base all'indirizzo di consegna.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGAMENTI E RESO -->
+<div class="wrap">
+  <div class="sec reveal">
+    <div class="sec-label">Pagamenti e resi</div>
+    <h2 class="sec-title">Acquista in <em>sicurezza</em></h2>
+    <div class="pagamenti-grid">
+      <div class="pagamento-card">
+        <div class="pagamento-icon">💳</div>
+        <div class="pagamento-name">Carta di credito</div>
+        <div class="pagamento-desc">Visa, Mastercard e tutte le principali carte di credito e debito.</div>
+      </div>
+      <div class="pagamento-card">
+        <div class="pagamento-icon">🅿️</div>
+        <div class="pagamento-name">PayPal</div>
+        <div class="pagamento-desc">Paga in modo rapido e sicuro con il tuo account PayPal.</div>
+      </div>
+      <div class="pagamento-card">
+        <div class="pagamento-icon">🔒</div>
+        <div class="pagamento-name">Pagamento sicuro</div>
+        <div class="pagamento-desc">Tutte le transazioni sono protette con crittografia SSL.</div>
+      </div>
+    </div>
+    <div class="reso-banner">
+      <div class="reso-left">
+        <div class="reso-icon">↩️</div>
+        <div>
+          <div class="reso-title">100% soddisfatti o rimborsati</div>
+          <div class="reso-desc">Se per qualsiasi motivo non sei soddisfatto del tuo acquisto, rimborsiamo entro 7 giorni. Senza discussioni.</div>
+        </div>
+      </div>
+      <div class="reso-badge">7 giorni</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <span class="foot-brand-name">Farmaceutici Morri</span>
+      <span class="foot-brand-tag">Salute &amp; Benessere — San Marino</span>
+      <p class="foot-desc">Vendita online di integratori, cosmetici e dispositivi medici. Spedizioni in tutta Italia dalla Repubblica di San Marino.</p>
+      <div class="foot-contact">
+        <div>Via Vitalis di Giovanni, 13 — 47899 RSM</div>
+        <div><a href="tel:054990309">0549 905309</a></div>
+        <div><a href="mailto:info@farmaceuticimorri.com">info@farmaceuticimorri.com</a></div>
+      </div>
+    </div>
+    <div>
+      <div class="foot-col-title">Catalogo</div>
+      <ul class="foot-links">
+        <li><a href="#">Integratori</a></li>
+        <li><a href="#">Cosmetici</a></li>
+        <li><a href="#">Fitoterapia</a></li>
+        <li><a href="#">Igiene &amp; Benessere</a></li>
+        <li><a href="#">Dispositivi medici</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-title">Azienda</div>
+      <ul class="foot-links">
+        <li><a href="#">Chi siamo</a></li>
+        <li><a href="#">Offerte</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contatti</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-title">Supporto</div>
+      <ul class="foot-links">
+        <li><a href="#">Come ordinare</a></li>
+        <li><a href="#">Spedizioni e resi</a></li>
+        <li><a href="#">Il mio account</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Termini e condizioni</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Farmaceutici Morri S.p.A. — COE SM03673 — Licenza e-commerce nr. 817 del 18/12/2020</span>
+    <span><a href="#">Privacy</a>&nbsp;·&nbsp;<a href="#">Cookie</a></span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
