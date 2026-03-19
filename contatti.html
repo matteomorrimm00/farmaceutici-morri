@@ -884,3 +884,16 @@ footer { background: #141E28; padding: 56px 52px 28px; }
   <div class="foot-bottom">
     <span>© 2025 Farmaceutici Morri S.p.A. — COE SM03673 — Licenza e-commerce nr. 817 del 18/12/2020</span>
     <span><a href="#">Privacy</a>&nbsp;·&nb
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('mobileMenu');
+  var btn = document.querySelector('.hamburger');
+  if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
+</script>
