@@ -6,907 +6,346 @@
 <title>Chi Siamo — Farmaceutici Morri</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --blue:#3A7FBD;--blue-mid:#5599CC;--blue-lt:#A8CBE8;
+  --blue-bg:#E8F2F9;--page-bg:#F2F6FA;--white:#FFFFFF;
+  --text:#192838;--text-2:#526475;--text-3:#98ADB8;--border:#DDE8F0;
+  --font-s:'DM Sans',sans-serif;--font-d:'Cormorant Garamond',serif;
+}
+body{font-family:var(--font-s);background:var(--page-bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;}
+footer{background:#141E28;padding:56px 52px 28px;}
+.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.foot-brand{font-family:var(--font-d);font-size:20px;font-weight:500;color:white;display:block;}
+.foot-tag{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue-mid);display:block;margin:3px 0 14px;}
+.foot-desc{font-size:13px;color:rgba(255,255,255,0.3);line-height:1.7;margin-bottom:16px;}
+.foot-contact{font-size:12px;color:rgba(255,255,255,0.25);line-height:2.2;}
+.foot-contact a{color:rgba(255,255,255,0.35);text-decoration:none;}
+.fcol{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:14px;}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.flinks a{font-size:13px;color:rgba(255,255,255,0.25);text-decoration:none;transition:color .18s;}
+.flinks a:hover{color:rgba(255,255,255,0.65);}
+.foot-bottom{max-width:1100px;margin:0 auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,0.16);}
+.foot-bottom a{color:rgba(255,255,255,0.3);text-decoration:none;}
+@media(max-width:768px){footer{padding:36px 16px 20px;}.foot-grid{grid-template-columns:1fr;gap:24px;}.foot-bottom{flex-direction:column;gap:8px;text-align:center;}}
+@media(min-width:769px) and (max-width:1024px){footer{padding:40px 28px 24px;}.foot-grid{grid-template-columns:1fr 1fr;gap:28px;}}
 
-:root {
-  --blue:      #3A7FBD;
-  --blue-mid:  #5599CC;
-  --blue-lt:   #A8CBE8;
-  --blue-bg:   #E8F2F9;
-  --page-bg:   #F2F6FA;
-  --white:     #FFFFFF;
-  --text:      #192838;
-  --text-2:    #526475;
-  --text-3:    #98ADB8;
-  --border:    #DDE8F0;
-  --shadow-sm: 0 2px 12px rgba(25,40,56,0.06);
-  --shadow-md: 0 6px 28px rgba(25,40,56,0.09);
-  --r:         14px;
-  --font-s: 'DM Sans', sans-serif;
-  --font-d: 'Cormorant Garamond', serif;
-}
-
-body {
-  font-family: var(--font-s);
-  background: var(--page-bg);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
-}
-
-/* ─── NAVBAR (identica alla homepage) ─── */
-nav {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  height: 66px;
-  padding: 0 52px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: var(--shadow-sm);
-}
-.logo { text-decoration: none; }
-.logo-name { font-family: var(--font-d); font-size: 21px; font-weight: 500; color: var(--text); letter-spacing: 0.01em; line-height: 1; display: block; }
-.logo-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-mid); display: block; margin-top: 3px; }
-.nav-links { display: flex; gap: 2px; list-style: none; }
-.nav-links a { font-size: 13.5px; font-weight: 400; color: var(--text-2); text-decoration: none; padding: 7px 13px; border-radius: 8px; transition: all .18s; }
-.nav-links a:hover { color: var(--blue); background: var(--blue-bg); }
-.nav-links .active { color: var(--blue); font-weight: 500; }
-.nav-right { display: flex; gap: 10px; align-items: center; }
-.btn-ghost { height: 38px; padding: 0 18px; background: transparent; border: 1px solid var(--border); border-radius: 9px; font-family: var(--font-s); font-size: 13px; font-weight: 500; color: var(--text-2); cursor: pointer; transition: all .18s; }
-.btn-ghost:hover { border-color: var(--blue-lt); color: var(--blue); }
-.btn-solid { height: 38px; padding: 0 20px; background: var(--blue); border: none; border-radius: 9px; font-family: var(--font-s); font-size: 13px; font-weight: 500; color: white; cursor: pointer; transition: all .18s; }
-.btn-solid:hover { background: #2e6fa8; }
-
-/* ─── HERO ─── */
-.hero {
-  background: linear-gradient(160deg, #1d4e7a 0%, #2a6aaa 45%, #3d89c8 100%);
-  padding: 80px 52px 100px;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -150px; right: -150px;
-  width: 500px; height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 65%);
-  pointer-events: none;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(to bottom, transparent, var(--page-bg));
-  pointer-events: none;
-}
-.hero-breadcrumb {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 24px;
-}
-.hero-breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; }
-.hero-breadcrumb a:hover { color: rgba(255,255,255,0.75); }
-.hero-breadcrumb span { color: rgba(255,255,255,0.25); }
-.hero-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 16px;
-}
-.hero-label::before { content: ''; width: 18px; height: 1px; background: rgba(255,255,255,0.3); }
-.hero-label::after  { content: ''; width: 18px; height: 1px; background: rgba(255,255,255,0.3); }
-.hero-title {
-  font-family: var(--font-d);
-  font-size: 58px;
-  font-weight: 400;
-  color: white;
-  line-height: 1.08;
-  letter-spacing: -0.01em;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
-}
-.hero-title em { font-style: italic; color: rgba(255,255,255,0.65); }
-.hero-sub {
-  font-size: 16px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.6);
-  max-width: 560px;
-  margin: 0 auto;
-  line-height: 1.75;
-  position: relative;
-  z-index: 1;
-}
-
-/* ─── SHARED ─── */
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 52px; }
-.sec { padding: 80px 0; }
-.sec-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-mid); margin-bottom: 8px; }
-.sec-title { font-family: var(--font-d); font-size: 40px; font-weight: 400; color: var(--text); line-height: 1.12; letter-spacing: -0.01em; }
-.sec-title em { font-style: italic; color: var(--blue); }
-
-/* ─── STORIA ─── */
-.storia-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
-  align-items: center;
-}
-.storia-text {}
-.storia-body {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--text-2);
-  line-height: 1.85;
-  margin-top: 20px;
-}
-.storia-body p + p { margin-top: 16px; }
-.storia-img-wrap {
-  position: relative;
-}
-.storia-img {
-  width: 100%;
-  border-radius: 16px;
-  display: block;
-  object-fit: cover;
-  height: 380px;
-  box-shadow: var(--shadow-md);
-}
-.storia-img-placeholder {
-  width: 100%;
-  height: 380px;
-  background: var(--blue-bg);
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-  position: relative;
-}
-.storia-img-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-}
-.storia-badge {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: var(--white);
-  border-radius: 12px;
-  padding: 12px 18px;
-  box-shadow: var(--shadow-md);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.storia-badge-num {
-  font-family: var(--font-d);
-  font-size: 30px;
-  font-weight: 500;
-  color: var(--blue);
-  line-height: 1;
-}
-.storia-badge-label {
-  font-size: 11px;
-  color: var(--text-2);
-  line-height: 1.4;
-}
-
-/* ─── NUMERI ─── */
-.numeri-strip {
-  background: linear-gradient(135deg, #1d4e7a 0%, #2a6aaa 100%);
-  padding: 56px 52px;
-}
-.numeri-grid {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 16px;
-  overflow: hidden;
-}
-.numero {
-  padding: 36px 28px;
-  text-align: center;
-  background: rgba(255,255,255,0.05);
-  transition: background .18s;
-}
-.numero:hover { background: rgba(255,255,255,0.1); }
-.numero-val {
-  font-family: var(--font-d);
-  font-size: 48px;
-  font-weight: 500;
-  color: white;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.numero-label {
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 0.04em;
-}
-
-/* ─── VALORI ─── */
-.valori-bg { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.valori-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 40px;
-}
-.valore {
-  background: var(--page-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 28px 24px;
-  transition: all .2s;
-}
-.valore:hover {
-  background: var(--blue-bg);
-  border-color: var(--blue-lt);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-.valore-icon {
-  width: 44px; height: 44px;
-  background: var(--blue-bg);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-.valore-title {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-.valore-text {
-  font-size: 13px;
-  color: var(--text-2);
-  line-height: 1.65;
-  font-weight: 300;
-}
-
-/* ─── PERCHÉ NOI ─── */
-.perche-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
-  align-items: center;
-}
-.perche-points {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 28px;
-}
-.perche-point {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-.perche-point-num {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: var(--blue-bg);
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--blue);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.perche-point-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
-.perche-point-text { font-size: 13px; color: var(--text-2); line-height: 1.65; font-weight: 300; }
-.perche-quote {
-  background: linear-gradient(135deg, #1d4e7a 0%, #2a6aaa 100%);
-  border-radius: 20px;
-  padding: 44px 40px;
-  position: relative;
-}
-.perche-quote::before {
-  content: '"';
-  font-family: var(--font-d);
-  font-size: 120px;
-  color: rgba(255,255,255,0.08);
-  position: absolute;
-  top: -10px; left: 24px;
-  line-height: 1;
-}
-.perche-quote-text {
-  font-family: var(--font-d);
-  font-size: 24px;
-  font-weight: 400;
-  font-style: italic;
-  color: white;
-  line-height: 1.5;
-  margin-bottom: 24px;
-  position: relative;
-}
-.perche-quote-author {
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* ─── TEAM ─── */
-.team-bg { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 40px;
-}
-.team-card {
-  background: var(--page-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  overflow: hidden;
-  transition: all .2s;
-  text-align: center;
-}
-.team-card:hover {
-  border-color: var(--blue-lt);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-}
-.team-photo {
-  height: 280px;
-  background: var(--blue-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-}
-.team-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.team-photo-placeholder {
-  width: 72px; height: 72px;
-  border-radius: 50%;
-  background: var(--blue-bg);
-  border: 2px dashed var(--blue-lt);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px;
-  color: var(--blue-lt);
-}
-.team-photo-note {
-  font-size: 11px;
-  color: var(--text-3);
-  letter-spacing: 0.04em;
-}
-.team-body { padding: 22px 20px 24px; }
-.team-name {
-  font-family: var(--font-d);
-  font-size: 22px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-.team-role {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--blue-mid);
-  margin-bottom: 12px;
-}
-.team-founder {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--blue-bg);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 4px 12px;
-  font-size: 11px;
-  color: var(--text-2);
-}
-
-/* ─── FONDATORE ─── */
-.fondatore-strip {
-  background: var(--page-bg);
-  border-top: 1px solid var(--border);
-  padding: 56px 52px;
-}
-.fondatore-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 36px 40px;
-  box-shadow: var(--shadow-sm);
-}
-.fondatore-icon {
-  width: 64px; height: 64px;
-  background: var(--blue-bg);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px;
-  flex-shrink: 0;
-}
-.fondatore-text { flex: 1; }
-.fondatore-title { font-family: var(--font-d); font-size: 22px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
-.fondatore-desc { font-size: 14px; color: var(--text-2); line-height: 1.7; font-weight: 300; }
-
-/* ─── CONTATTI ─── */
-.contatti-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-top: 40px;
-}
-.contatti-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 32px;
-  box-shadow: var(--shadow-sm);
-}
-.contatti-card-title {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--blue-mid);
-  margin-bottom: 20px;
-}
-.contatti-row {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-}
-.contatti-row:last-child { border-bottom: none; padding-bottom: 0; }
-.contatti-icon {
-  width: 36px; height: 36px;
-  background: var(--blue-bg);
-  border-radius: 9px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px;
-  flex-shrink: 0;
-}
-.contatti-label { font-size: 11px; color: var(--text-3); margin-bottom: 2px; }
-.contatti-value { font-size: 14px; font-weight: 500; color: var(--text); }
-.contatti-value a { color: var(--text); text-decoration: none; }
-.contatti-value a:hover { color: var(--blue); }
-.orari-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
-.orario-block {}
-.orario-periodo { font-size: 11px; color: var(--text-3); margin-bottom: 2px; }
-.orario-ore { font-size: 14px; font-weight: 500; color: var(--text); }
-
-/* ─── FOOTER ─── */
-footer {
-  background: #141E28;
-  padding: 56px 52px 28px;
-  margin-top: 0;
-}
-.foot-grid {
-  max-width: 1100px; margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 44px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.foot-brand-name { font-family: var(--font-d); font-size: 20px; font-weight: 500; color: white; display: block; }
-.foot-brand-tag { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-mid); display: block; margin: 3px 0 14px; }
-.foot-desc { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.7; margin-bottom: 16px; }
-.foot-contact { font-size: 12px; color: rgba(255,255,255,0.25); line-height: 2.2; }
-.foot-contact a { color: rgba(255,255,255,0.35); text-decoration: none; }
-.foot-col-title { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
-.foot-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.foot-links a { font-size: 13px; color: rgba(255,255,255,0.25); text-decoration: none; transition: color .18s; }
-.foot-links a:hover { color: rgba(255,255,255,0.65); }
-.foot-bottom {
-  max-width: 1100px; margin: 0 auto;
-  padding-top: 22px;
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 11px; color: rgba(255,255,255,0.16);
-}
-.foot-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; }
-
-/* ─── REVEAL ─── */
-.reveal { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
-.reveal.in { opacity: 1; transform: none; }
-
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
-  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
-  .mobile-nav { display: none; position: fixed; top: 66px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); z-index: 199; flex-direction: column; }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a { display: block; padding: 14px 24px; font-size: 15px; color: var(--text-2); text-decoration: none; border-bottom: 1px solid var(--border); }
-  .mobile-nav a:last-child { border-bottom: none; }
-  .mobile-nav .active { color: var(--blue); font-weight: 500; }
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .btn-ghost { display: none; }
-    .hamburger { display: flex; }
-    .mobile-nav { top: 58px; }
+  nav { background:var(--white); border-bottom:1px solid var(--border); height:66px; padding:0 52px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:300; box-shadow:0 2px 12px rgba(25,40,56,0.06); }
+  .logo { text-decoration:none; }
+  .logo-name { font-family:var(--font-d); font-size:21px; font-weight:500; color:var(--text); line-height:1; display:block; }
+  .logo-tag { font-size:9px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue-mid); display:block; margin-top:3px; }
+  .nav-links { display:flex; gap:2px; list-style:none; }
+  .nav-links a { font-size:13.5px; color:var(--text-2); text-decoration:none; padding:7px 13px; border-radius:8px; transition:all .18s; }
+  .nav-links a:hover,.nav-links .active { color:var(--blue); background:var(--blue-bg); }
+  .nav-links .active { font-weight:500; }
+  .nav-right { display:flex; gap:10px; align-items:center; }
+  .btn-ghost { height:38px; padding:0 18px; background:transparent; border:1px solid var(--border); border-radius:9px; font-family:var(--font-s); font-size:13px; font-weight:500; color:var(--text-2); cursor:pointer; }
+  .btn-solid { height:38px; padding:0 20px; background:var(--blue); border:none; border-radius:9px; font-family:var(--font-s); font-size:13px; font-weight:500; color:white; cursor:pointer; }
+  .hbg { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:8px; }
+  .hbg span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; }
+  .mnav { display:none; position:fixed; top:66px; left:0; right:0; background:var(--white); border-bottom:1px solid var(--border); box-shadow:0 6px 28px rgba(25,40,56,0.09); z-index:299; }
+  .mnav a { display:block; padding:15px 24px; font-size:16px; color:var(--text-2); text-decoration:none; border-bottom:1px solid var(--border); }
+  .mnav a:last-child { border-bottom:none; }
+  .mnav .active { color:var(--blue); font-weight:500; }
+  .mnav.open { display:block; }
+  @media(max-width:768px) {
+    nav { padding:0 16px; height:58px; }
+    .nav-links { display:none; }
+    .btn-ghost { display:none; }
+    .btn-solid { font-size:12px; padding:0 12px; height:34px; }
+    .hbg { display:flex; }
+    .mnav { top:58px; }
   }
 
+.hero{background:linear-gradient(160deg,#1d4e7a 0%,#2a6aaa 45%,#3d89c8 100%);padding:72px 52px 90px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to bottom,transparent,var(--page-bg));pointer-events:none;}
+.hero-bc{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:18px;}
+.hero-bc a{color:rgba(255,255,255,0.45);text-decoration:none;}
+.hero-bc span{color:rgba(255,255,255,0.25);}
+.hero-lbl{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:14px;}
+.hero-lbl::before,.hero-lbl::after{content:'';width:16px;height:1px;background:rgba(255,255,255,0.3);}
+.hero-title{font-family:var(--font-d);font-size:50px;font-weight:400;color:white;line-height:1.1;margin-bottom:14px;position:relative;z-index:1;}
+.hero-title em{font-style:italic;color:rgba(255,255,255,0.65);}
+.hero-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,0.55);max-width:540px;margin:0 auto;position:relative;z-index:1;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 52px;}
+.sec{padding:64px 0;}
+.slbl{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue-mid);margin-bottom:8px;}
+.stit{font-family:var(--font-d);font-size:36px;font-weight:400;color:var(--text);line-height:1.12;}
+.stit em{font-style:italic;color:var(--blue);}
+/* STORIA */
+.storia{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.storia-body{font-size:15px;font-weight:300;color:var(--text-2);line-height:1.85;margin-top:18px;}
+.storia-body p+p{margin-top:14px;}
+.storia-img{width:100%;height:340px;object-fit:cover;border-radius:16px;box-shadow:0 6px 28px rgba(25,40,56,0.09);display:block;}
+.storia-badge{position:absolute;bottom:16px;left:16px;background:white;border-radius:10px;padding:10px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(25,40,56,0.12);}
+.storia-img-wrap{position:relative;}
+.badge-n{font-family:var(--font-d);font-size:28px;font-weight:500;color:var(--blue);line-height:1;}
+.badge-l{font-size:11px;color:var(--text-2);line-height:1.3;}
+/* NUMERI */
+.numeri{background:linear-gradient(135deg,#1d4e7a 0%,#2a6aaa 100%);padding:52px;}
+.numeri-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;}
+.nitem{padding:32px 24px;text-align:center;background:rgba(255,255,255,0.05);}
+.nval{font-family:var(--font-d);font-size:44px;font-weight:500;color:white;line-height:1;margin-bottom:6px;}
+.nlbl{font-size:12px;color:rgba(255,255,255,0.5);}
+/* VALORI */
+.val-bg{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.val-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;}
+.vcard{background:var(--page-bg);border:1px solid var(--border);border-radius:12px;padding:24px 20px;transition:all .2s;}
+.vcard:hover{background:var(--blue-bg);border-color:var(--blue-lt);transform:translateY(-2px);}
+.vicon{width:42px;height:42px;background:var(--blue-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px;}
+.vtit{font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;}
+.vtxt{font-size:13px;color:var(--text-2);line-height:1.65;font-weight:300;}
+/* PERCHE */
+.perche{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.perche-pts{display:flex;flex-direction:column;gap:18px;margin-top:24px;}
+.ppt{display:flex;gap:14px;align-items:flex-start;}
+.ppt-n{width:30px;height:30px;border-radius:50%;background:var(--blue-bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--blue);flex-shrink:0;margin-top:2px;}
+.ppt-t{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;}
+.ppt-d{font-size:13px;color:var(--text-2);line-height:1.6;font-weight:300;}
+.quote-box{background:linear-gradient(135deg,#1d4e7a 0%,#2a6aaa 100%);border-radius:18px;padding:36px 32px;position:relative;}
+.quote-box::before{content:'"';font-family:var(--font-d);font-size:100px;color:rgba(255,255,255,0.07);position:absolute;top:-10px;left:20px;line-height:1;}
+.quote-txt{font-family:var(--font-d);font-size:22px;font-style:italic;color:white;line-height:1.5;margin-bottom:20px;position:relative;}
+.quote-auth{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:0.08em;text-transform:uppercase;}
+/* FONDATORE */
+.fondatore{background:var(--page-bg);border-top:1px solid var(--border);padding:48px 52px;}
+.fond-inner{max-width:1100px;margin:0 auto;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:32px 36px;display:flex;align-items:center;gap:24px;}
+.fond-icon{width:56px;height:56px;background:var(--blue-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.fond-tit{font-family:var(--font-d);font-size:20px;font-weight:500;color:var(--text);margin-bottom:6px;}
+.fond-txt{font-size:14px;color:var(--text-2);line-height:1.7;font-weight:300;}
+/* TEAM */
+.team-bg{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;}
+.tcard{background:var(--page-bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .2s;text-align:center;}
+.tcard:hover{border-color:var(--blue-lt);box-shadow:0 6px 28px rgba(25,40,56,0.09);transform:translateY(-2px);}
+.tphoto{height:260px;background:var(--blue-bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border-bottom:1px solid var(--border);}
+.tphoto-icon{width:64px;height:64px;border-radius:50%;background:var(--blue-bg);border:2px dashed var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--blue-lt);}
+.tphoto-note{font-size:11px;color:var(--text-3);}
+.tbody{padding:20px 18px 22px;}
+.tname{font-family:var(--font-d);font-size:20px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.trole{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue-mid);margin-bottom:10px;}
+.tbadge{display:inline-flex;align-items:center;gap:5px;background:var(--blue-bg);border:1px solid var(--border);border-radius:100px;padding:4px 10px;font-size:11px;color:var(--text-2);}
+/* CONTATTI */
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;}
+.ccard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;}
+.ccard-t{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue-mid);margin-bottom:16px;}
+.crow{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.crow:last-child{border-bottom:none;}
+.cicon{width:34px;height:34px;background:var(--blue-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.clbl{font-size:11px;color:var(--text-3);margin-bottom:2px;}
+.cval{font-size:14px;font-weight:500;color:var(--text);}
+.cval a{color:var(--text);text-decoration:none;}
+.cval a:hover{color:var(--blue);}
+.orari{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px;}
+.op{font-size:10px;color:var(--text-3);margin-bottom:1px;}
+.oo{font-size:14px;font-weight:500;color:var(--text);}
+/* MOBILE */
+@media(max-width:768px){
+  .hero{padding:44px 16px 64px;}
+  .hero-title{font-size:32px;}
+  .hero-sub{font-size:14px;}
+  .wrap{padding:0 16px;}
+  .sec{padding:40px 0;}
+  .stit{font-size:26px;}
+  .storia{grid-template-columns:1fr;gap:24px;}
+  .storia-img{height:220px;}
+  .numeri{padding:36px 16px;}
+  .numeri-grid{grid-template-columns:1fr 1fr;}
+  .nval{font-size:34px;}
+  .val-grid{grid-template-columns:1fr;gap:10px;}
+  .perche{grid-template-columns:1fr;gap:24px;}
+  .quote-box{padding:24px 20px;}
+  .quote-txt{font-size:18px;}
+  .fondatore{padding:32px 16px;}
+  .fond-inner{flex-direction:column;padding:24px 16px;}
+  .team-grid{grid-template-columns:1fr;gap:14px;}
+  .cg{grid-template-columns:1fr;gap:14px;}
+}
+@media(min-width:769px) and (max-width:1024px){
+  nav{padding:0 28px;}.wrap{padding:0 28px;}
+  .hero{padding:56px 28px 72px;}
+  .hero-title{font-size:40px;}
+  .storia{gap:36px;}
+  .val-grid{grid-template-columns:1fr 1fr;}
+  .team-grid{grid-template-columns:1fr 1fr 1fr;}
+  .numeri-grid{grid-template-columns:repeat(4,1fr);}
+  .fondatore{padding:36px 28px;}
+}
 </style>
 </head>
 <body>
-
-<!-- NAVBAR -->
 <nav>
-  <a class="logo" href="index.html">
-    <span class="logo-name">Farmaceutici Morri</span>
-    <span class="logo-tag">Salute &amp; Benessere</span>
-  </a>
-  <ul class="nav-links">
+  <a class=logo href="index.html"><span class=logo-name>Farmaceutici Morri</span><span class=logo-tag>Salute &amp; Benessere</span></a>
+  <ul class=nav-links>
     <li><a href="index.html">Home</a></li>
     <li><a href="#">Catalogo</a></li>
     <li><a href="#">Offerte</a></li>
-    <li><a href="chisiamo.html" class="active">Chi siamo</a></li>
+    <li><a href="chisiamo.html" class=active>Chi siamo</a></li>
     <li><a href="contatti.html">Contatti</a></li>
   </ul>
-  <div class="nav-right">
-    <button class="btn-ghost">Accedi</button>
-    <button class="btn-solid">Carrello (0)</button>
-    <button class="hamburger" id="hamburgerBtn" aria-label="Apri menu"><span></span><span></span><span></span></button>
+  <div class=nav-right>
+    <button class=btn-ghost>Accedi</button>
+    <button class=btn-solid>Carrello (0)</button>
+    <button class=hbg id=hbg aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-nav" id="mobileNav">
+<div class=mnav id=mnav>
   <a href="index.html">Home</a>
   <a href="#">Catalogo</a>
   <a href="#">Offerte</a>
-  <a href="chisiamo.html" class="active">Chi siamo</a>
+  <a href="chisiamo.html" class=active>Chi siamo</a>
   <a href="contatti.html">Contatti</a>
 </div>
 
-<!-- HERO -->
-<div class="hero reveal in">
-  <div class="hero-breadcrumb">
-    <a href="#">Home</a>
-    <span>/</span>
-    <span style="color:rgba(255,255,255,0.65)">Chi siamo</span>
-  </div>
-  <div class="hero-label">La nostra storia</div>
-  <h1 class="hero-title">Sessant'anni al servizio<br>della <em>salute</em></h1>
-  <p class="hero-sub">Un'azienda familiare sammarinese con oltre 60 anni di esperienza nella distribuzione farmaceutica. La stessa passione di sempre.</p>
+<div class=hero>
+  <div class=hero-bc><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,0.7)">Chi siamo</span></div>
+  <div class=hero-lbl>La nostra storia</div>
+  <h1 class=hero-title>Sessant'anni al servizio<br>della <em>salute</em></h1>
+  <p class=hero-sub>Un'azienda familiare sammarinese con oltre 60 anni di esperienza nella distribuzione farmaceutica. La stessa passione di sempre.</p>
 </div>
 
-<!-- STORIA -->
-<div class="wrap">
-  <div class="sec reveal">
-    <div class="storia-grid">
-      <div class="storia-text">
-        <div class="sec-label">Le nostre origini</div>
-        <h2 class="sec-title">Fondati nel <em>1960</em><br>da Luigi Morri</h2>
-        <div class="storia-body">
+<div class=wrap>
+  <div class=sec>
+    <div class=storia>
+      <div>
+        <div class=slbl>Le nostre origini</div>
+        <div class=stit>Fondati nel <em>1960</em><br>da Luigi Morri</div>
+        <div class=storia-body>
           <p>Farmaceutici Morri nasce nel 1960, quando Luigi Morri fonda a San Marino quella che diventerà una delle realtà più solide della distribuzione farmaceutica sammarinese. Sessant'anni dopo, l'azienda è ancora qui — cresciuta, evoluta, ma fedele agli stessi principi con cui è nata.</p>
-          <p>Nel corso degli anni abbiamo lavorato con tutti gli attori della filiera farmaceutica: farmacie, parafarmacie, erboristerie, case di cura e centri per la salute. Ogni giorno mettiamo la stessa cura nel rifornire i professionisti del settore e nel rispondere direttamente alle esigenze dei clienti privati attraverso il nostro shop online.</p>
+          <p>Nel corso degli anni abbiamo lavorato con tutti gli attori della filiera farmaceutica: farmacie, parafarmacie, erboristerie, case di cura e centri per la salute.</p>
           <p>Oggi l'azienda è guidata dai figli del fondatore — Mauro, Cinzia e Monica Morri — che portano avanti con orgoglio una storia di famiglia che si intreccia indissolubilmente con quella dell'azienda stessa.</p>
         </div>
       </div>
-      <div class="storia-img-wrap">
-        <div class="storia-img-placeholder">
-          <img src="/mnt/user-data/uploads/60e967dc183ec140663975.PNG" alt="Sede Farmaceutici Morri" onerror="this.style.display='none'">
-        </div>
-        <div class="storia-badge">
-          <div class="storia-badge-num">1960</div>
-          <div class="storia-badge-label">Anno di<br>fondazione</div>
+      <div class=storia-img-wrap>
+        <img class=storia-img src="/mnt/user-data/uploads/60e967dc183ec140663975.PNG" alt="Sede Farmaceutici Morri" onerror="this.style.background='var(--blue-bg)'">
+        <div class=storia-badge>
+          <div class=badge-n>1960</div>
+          <div class=badge-l>Anno di<br>fondazione</div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- NUMERI -->
-<div class="numeri-strip reveal">
-  <div class="numeri-grid">
-    <div class="numero">
-      <div class="numero-val">1960</div>
-      <div class="numero-label">Anno di fondazione</div>
-    </div>
-    <div class="numero">
-      <div class="numero-val">60+</div>
-      <div class="numero-label">Anni di esperienza</div>
-    </div>
-    <div class="numero">
-      <div class="numero-val">300+</div>
-      <div class="numero-label">Prodotti in catalogo</div>
-    </div>
-    <div class="numero">
-      <div class="numero-val">5</div>
-      <div class="numero-label">Macro-categorie</div>
-    </div>
+<div class=numeri>
+  <div class=numeri-grid>
+    <div class=nitem><div class=nval>1960</div><div class=nlbl>Anno di fondazione</div></div>
+    <div class=nitem><div class=nval>60+</div><div class=nlbl>Anni di esperienza</div></div>
+    <div class=nitem><div class=nval>300+</div><div class=nlbl>Prodotti in catalogo</div></div>
+    <div class=nitem><div class=nval>5</div><div class=nlbl>Macro-categorie</div></div>
   </div>
 </div>
 
-<!-- VALORI -->
-<div class="valori-bg">
-  <div class="wrap">
-    <div class="sec reveal">
-      <div class="sec-label">I nostri principi</div>
-      <h2 class="sec-title">Cosa ci <em>muove</em> ogni giorno</h2>
-      <div class="valori-grid">
-        <div class="valore">
-          <div class="valore-icon">🏛️</div>
-          <div class="valore-title">Esperienza e tradizione</div>
-          <div class="valore-text">Oltre sessant'anni di presenza nel settore farmaceutico ci hanno insegnato cosa conta davvero: la fiducia si costruisce nel tempo, non si improvvisa.</div>
-        </div>
-        <div class="valore">
-          <div class="valore-icon">⭐</div>
-          <div class="valore-title">Qualità e servizio</div>
-          <div class="valore-text">Selezioniamo ogni prodotto con criteri rigorosi. Non distribuiamo tutto — distribuiamo bene. La qualità non è un optional, è il nostro punto di partenza.</div>
-        </div>
-        <div class="valore">
-          <div class="valore-icon">🔬</div>
-          <div class="valore-title">Innovazione e tecnologia</div>
-          <div class="valore-text">Il settore farmaceutico evolve continuamente. Investiamo in aggiornamento e innovazione per restare all'avanguardia e offrire sempre il meglio.</div>
-        </div>
-        <div class="valore">
-          <div class="valore-icon">📈</div>
-          <div class="valore-title">Sviluppo e dinamismo</div>
-          <div class="valore-text">Non ci accontentiamo di quello che siamo. La crescita continua è nel nostro DNA fin dal 1960 — ogni anno un passo avanti, con la stessa energia del primo giorno.</div>
-        </div>
+<div class=val-bg>
+  <div class=wrap>
+    <div class=sec>
+      <div class=slbl>I nostri principi</div>
+      <div class=stit>Cosa ci <em>muove</em> ogni giorno</div>
+      <div class=val-grid>
+        <div class=vcard><div class=vicon>🏛️</div><div class=vtit>Esperienza e tradizione</div><div class=vtxt>Oltre sessant'anni nel settore farmaceutico ci hanno insegnato che la fiducia si costruisce nel tempo, non si improvvisa.</div></div>
+        <div class=vcard><div class=vicon>⭐</div><div class=vtit>Qualità e servizio</div><div class=vtxt>Selezioniamo ogni prodotto con criteri rigorosi. Non distribuiamo tutto — distribuiamo bene.</div></div>
+        <div class=vcard><div class=vicon>🔬</div><div class=vtit>Innovazione e tecnologia</div><div class=vtxt>Il settore farmaceutico evolve continuamente. Investiamo in aggiornamento per restare all'avanguardia.</div></div>
+        <div class=vcard><div class=vicon>📈</div><div class=vtit>Sviluppo e dinamismo</div><div class=vtxt>La crescita continua è nel nostro DNA fin dal 1960 — ogni anno un passo avanti, con la stessa energia del primo giorno.</div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PERCHÉ NOI -->
-<div class="wrap">
-  <div class="sec reveal">
-    <div class="perche-grid">
+<div class=wrap>
+  <div class=sec>
+    <div class=perche>
       <div>
-        <div class="sec-label">Perché sceglierci</div>
-        <h2 class="sec-title">Azienda familiare,<br>standard <em>professionali</em></h2>
-        <div class="perche-points">
-          <div class="perche-point">
-            <div class="perche-point-num">1</div>
-            <div>
-              <div class="perche-point-title">Non sei un numero d'ordine</div>
-              <div class="perche-point-text">Siamo un'azienda familiare. Questo significa che dietro ogni ordine c'è una persona che risponde, ascolta e si prende cura della tua richiesta con attenzione diretta.</div>
-            </div>
-          </div>
-          <div class="perche-point">
-            <div class="perche-point-num">2</div>
-            <div>
-              <div class="perche-point-title">Reputazione costruita in 60 anni</div>
-              <div class="perche-point-text">Farmacie, parafarmacie ed erboristerie di tutta Italia si affidano a noi da decenni. La nostra reputazione non è marketing — è il risultato di decenni di lavoro serio.</div>
-            </div>
-          </div>
-          <div class="perche-point">
-            <div class="perche-point-num">3</div>
-            <div>
-              <div class="perche-point-title">100% soddisfatti o rimborsati</div>
-              <div class="perche-point-text">Se per qualsiasi motivo non sei soddisfatto, rimborsiamo entro 7 giorni dall'acquisto. Senza discussioni.</div>
-            </div>
-          </div>
+        <div class=slbl>Perché sceglierci</div>
+        <div class=stit>Azienda familiare,<br>standard <em>professionali</em></div>
+        <div class=perche-pts>
+          <div class=ppt><div class=ppt-n>1</div><div><div class=ppt-t>Non sei un numero d'ordine</div><div class=ppt-d>Siamo un'azienda familiare. Dietro ogni ordine c'è una persona che risponde, ascolta e si prende cura della tua richiesta con attenzione diretta.</div></div></div>
+          <div class=ppt><div class=ppt-n>2</div><div><div class=ppt-t>Reputazione costruita in 60 anni</div><div class=ppt-d>Farmacie, parafarmacie ed erboristerie di tutta Italia si affidano a noi da decenni. La nostra reputazione non è marketing.</div></div></div>
+          <div class=ppt><div class=ppt-n>3</div><div><div class=ppt-t>100% soddisfatti o rimborsati</div><div class=ppt-d>Se non sei soddisfatto, rimborsiamo entro 7 giorni dall'acquisto. Senza discussioni.</div></div></div>
         </div>
       </div>
-      <div class="perche-quote">
-        <div class="perche-quote-text">Non ci limitiamo a distribuire prodotti. Ci impegniamo a selezionarli, a conoscerli, e a proporli con onestà.</div>
-        <div class="perche-quote-author">Farmaceutici Morri — dal 1960</div>
+      <div class=quote-box>
+        <div class=quote-txt>Non ci limitiamo a distribuire prodotti. Ci impegniamo a selezionarli, a conoscerli, e a proporli con onestà.</div>
+        <div class=quote-auth>Farmaceutici Morri — dal 1960</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FONDATORE -->
-<div class="fondatore-strip reveal">
-  <div class="fondatore-inner">
-    <div class="fondatore-icon">👤</div>
-    <div class="fondatore-text">
-      <div class="fondatore-title">Luigi Morri — Fondatore</div>
-      <div class="fondatore-desc">Nel 1960 Luigi Morri fondò a San Marino quella che sarebbe diventata una delle realtà più solide della distribuzione farmaceutica sammarinese. La sua visione — qualità, serietà e attenzione al cliente — è ancora oggi il filo conduttore di tutto ciò che facciamo. L'azienda che ha costruito è oggi nelle mani dei suoi figli, che ne portano avanti l'eredità con lo stesso spirito.</div>
-    </div>
-  </div>
-</div>
-
-<!-- TEAM -->
-<div class="team-bg">
-  <div class="wrap">
-    <div class="sec reveal">
-      <div class="sec-label">Il nostro team</div>
-      <h2 class="sec-title">I soci <em>fondatori</em></h2>
-      <p style="font-size:15px;font-weight:300;color:var(--text-2);margin-top:10px;line-height:1.7;">Figli di Luigi Morri, guidano l'azienda con la stessa passione e dedizione che ha contraddistinto la famiglia fin dal 1960.</p>
-      <div class="team-grid">
-
-        <div class="team-card">
-          <div class="team-photo">
-            <div class="team-photo-placeholder">👤</div>
-            <div class="team-photo-note">Foto in arrivo</div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Mauro Morri</div>
-            <div class="team-role">[Ruolo da definire]</div>
-            <div class="team-founder">
-              <span>⭐</span>
-              Socio fondatore
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-photo">
-            <div class="team-photo-placeholder">👤</div>
-            <div class="team-photo-note">Foto in arrivo</div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Cinzia Morri</div>
-            <div class="team-role">[Ruolo da definire]</div>
-            <div class="team-founder">
-              <span>⭐</span>
-              Socio fondatore
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-photo">
-            <div class="team-photo-placeholder">👤</div>
-            <div class="team-photo-note">Foto in arrivo</div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Monica Morri</div>
-            <div class="team-role">[Ruolo da definire]</div>
-            <div class="team-founder">
-              <span>⭐</span>
-              Socio fondatore
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CONTATTI E SEDE -->
-<div class="wrap">
-  <div class="sec reveal">
-    <div class="sec-label">Dove siamo</div>
-    <h2 class="sec-title">Vieni a <em>trovarci</em></h2>
-    <div class="contatti-grid">
-
-      <div class="contatti-card">
-        <div class="contatti-card-title">Sede e contatti</div>
-        <div class="contatti-row">
-          <div class="contatti-icon">📍</div>
-          <div>
-            <div class="contatti-label">Indirizzo</div>
-            <div class="contatti-value">Via Vitalis di Giovanni, 13<br>47899 — Repubblica di San Marino</div>
-          </div>
-        </div>
-        <div class="contatti-row">
-          <div class="contatti-icon">📞</div>
-          <div>
-            <div class="contatti-label">Telefono</div>
-            <div class="contatti-value"><a href="tel:054990309">0549 905309</a></div>
-          </div>
-        </div>
-        <div class="contatti-row">
-          <div class="contatti-icon">✉️</div>
-          <div>
-            <div class="contatti-label">Email</div>
-            <div class="contatti-value"><a href="/cdn-cgi/l/email-protection#d9b0b7bfb699bfb8abb4b8babcacadb0bab0b4b6ababb0f7bab6b4"><span class="__cf_email__" data-cfemail="51383f373e113730233c30323424253832383c3e2323387f323e3c">[email&#160;protected]</span></a></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="contatti-card">
-        <div class="contatti-card-title">Orari assistenza clienti</div>
-        <div class="contatti-row">
-          <div class="contatti-icon">🗓️</div>
-          <div>
-            <div class="contatti-label">Giorni</div>
-            <div class="contatti-value">Lunedì — Venerdì</div>
-          </div>
-        </div>
-        <div class="contatti-row">
-          <div class="contatti-icon">🕐</div>
-          <div>
-            <div class="contatti-label">Orario</div>
-            <div class="orari-grid">
-              <div class="orario-block">
-                <div class="orario-periodo">Mattina</div>
-                <div class="orario-ore">8:30 — 13:00</div>
-              </div>
-              <div class="orario-block">
-                <div class="orario-periodo">Pomeriggio</div>
-                <div class="orario-ore">14:30 — 17:30</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="contatti-row">
-          <div class="contatti-icon">↩️</div>
-          <div>
-            <div class="contatti-label">Politica di reso</div>
-            <div class="contatti-value">100% soddisfatti o rimborsati entro 7 giorni</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="foot-grid">
+<div class=fondatore>
+  <div class=fond-inner>
+    <div class=fond-icon>👤</div>
     <div>
-      <span class="foot-brand-name">Farmaceutici Morri</span>
-      <span class="foot-brand-tag">Salute &amp; Benessere — San Marino</span>
-      <p class="foot-desc">Vendita online di integratori, cosmetici e dispositivi medici. Spedizioni in tutta Italia dalla Repubblica di San Marino.</p>
-      <div class="foot-contact">
+      <div class=fond-tit>Luigi Morri — Fondatore</div>
+      <p class=fond-txt>Nel 1960 Luigi Morri fondò a San Marino quella che sarebbe diventata una delle realtà più solide della distribuzione farmaceutica sammarinese. La sua visione — qualità, serietà e attenzione al cliente — è ancora oggi il filo conduttore di tutto ciò che facciamo. L'azienda che ha costruito è oggi nelle mani dei suoi figli, che ne portano avanti l'eredità con lo stesso spirito.</p>
+    </div>
+  </div>
+</div>
+
+<div class=team-bg>
+  <div class=wrap>
+    <div class=sec>
+      <div class=slbl>Il nostro team</div>
+      <div class=stit>I soci <em>fondatori</em></div>
+      <p style="font-size:15px;font-weight:300;color:var(--text-2);margin-top:10px;">Figli di Luigi Morri, guidano l'azienda con la stessa passione e dedizione che ha contraddistinto la famiglia fin dal 1960.</p>
+      <div class=team-grid>
+        <div class=tcard><div class=tphoto><div class=tphoto-icon>👤</div><div class=tphoto-note>Foto in arrivo</div></div><div class=tbody><div class=tname>Mauro Morri</div><div class=trole>Socio</div><span class=tbadge>⭐ Socio fondatore</span></div></div>
+        <div class=tcard><div class=tphoto><div class=tphoto-icon>👤</div><div class=tphoto-note>Foto in arrivo</div></div><div class=tbody><div class=tname>Cinzia Morri</div><div class=trole>Socio</div><span class=tbadge>⭐ Socio fondatore</span></div></div>
+        <div class=tcard><div class=tphoto><div class=tphoto-icon>👤</div><div class=tphoto-note>Foto in arrivo</div></div><div class=tbody><div class=tname>Monica Morri</div><div class=trole>Socio</div><span class=tbadge>⭐ Socio fondatore</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class=wrap>
+  <div class=sec>
+    <div class=slbl>Dove siamo</div>
+    <div class=stit>Vieni a <em>trovarci</em></div>
+    <div class=cg>
+      <div class=ccard>
+        <div class=ccard-t>Sede e contatti</div>
+        <div class=crow><div class=cicon>📍</div><div><div class=clbl>Indirizzo</div><div class=cval>Via Vitalis di Giovanni, 13<br>47899 — Repubblica di San Marino</div></div></div>
+        <div class=crow><div class=cicon>📞</div><div><div class=clbl>Telefono</div><div class=cval><a href="tel:054990309">0549 905309</a></div></div></div>
+        <div class=crow><div class=cicon>✉️</div><div><div class=clbl>Email</div><div class=cval><a href="mailto:info@farmaceuticimorri.com">info@farmaceuticimorri.com</a></div></div></div>
+      </div>
+      <div class=ccard>
+        <div class=ccard-t>Orari assistenza</div>
+        <div class=crow><div class=cicon>🗓️</div><div><div class=clbl>Giorni</div><div class=cval>Lunedì — Venerdì</div></div></div>
+        <div class=crow><div class=cicon>🕐</div><div><div class=clbl>Orario</div><div class=orari><div><div class=op>Mattina</div><div class=oo>8:30 — 13:00</div></div><div><div class=op>Pomeriggio</div><div class=oo>14:30 — 17:30</div></div></div></div></div>
+        <div class=crow><div class=cicon>↩️</div><div><div class=clbl>Reso</div><div class=cval>100% soddisfatti o rimborsati entro 7 giorni</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class=foot-grid>
+    <div>
+      <span class=foot-brand>Farmaceutici Morri</span>
+      <span class=foot-tag>Salute &amp; Benessere — San Marino</span>
+      <p class=foot-desc>Vendita online di integratori, cosmetici e dispositivi medici. Spedizioni in tutta Italia dalla Repubblica di San Marino.</p>
+      <div class=foot-contact>
         <div>Via Vitalis di Giovanni, 13 — 47899 RSM</div>
         <div><a href="tel:054990309">0549 905309</a></div>
-        <div><a href="/cdn-cgi/l/email-protection#87eee9e1e8c7e1e6f5eae6e4e2f2f3eee4eeeae8f5f5eea9e4e8ea"><span class="__cf_email__" data-cfemail="523b3c343d123433203f33313727263b313b3f3d20203b7c313d3f">[email&#160;protected]</span></a></div>
+        <div><a href="mailto:info@farmaceuticimorri.com">info@farmaceuticimorri.com</a></div>
       </div>
     </div>
-    <div>
-      <div class="foot-col-title">Catalogo</div>
-      <ul class="foot-links">
-        <li><a href="#">Integratori</a></li>
-        <li><a href="#">Cosmetici</a></li>
-        <li><a href="#">Fitoterapia</a></li>
-        <li><a href="#">Igiene &amp; Benessere</a></li>
-        <li><a href="#">Dispositivi medici</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="foot-col-title">Azienda</div>
-      <ul class="foot-links">
-        <li><a href="#">Chi siamo</a></li>
-        <li><a href="#">Offerte</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="foot-col-title">Supporto</div>
-      <ul class="foot-links">
-        <li><a href="#">Come ordinare</a></li>
-        <li><a href="#">Spedizioni e resi</a></li>
-        <li><a href="#">Il mio account</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Termini e condizioni</a></li>
-      </ul>
-    </div>
+    <div><div class=fcol>Catalogo</div><ul class=flinks><li><a href="#">Integratori</a></li><li><a href="#">Cosmetici</a></li><li><a href="#">Fitoterapia</a></li><li><a href="#">Igiene &amp; Benessere</a></li><li><a href="#">Dispositivi medici</a></li></ul></div>
+    <div><div class=fcol>Azienda</div><ul class=flinks><li><a href="chisiamo.html">Chi siamo</a></li><li><a href="#">Offerte</a></li><li><a href="#">Blog</a></li><li><a href="contatti.html">Contatti</a></li></ul></div>
+    <div><div class=fcol>Supporto</div><ul class=flinks><li><a href="contatti.html">Spedizioni e resi</a></li><li><a href="#">Il mio account</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Termini e condizioni</a></li></ul></div>
   </div>
-  <div class="foot-bottom">
+  <div class=foot-bottom>
     <span>© 2025 Farmaceutici Morri S.p.A. — COE SM03673 — Licenza e-commerce nr. 817 del 18/12/2020</span>
-    <span><a href="#">Privacy</a>&nbsp;·&nb
+    <span><a href="#">Privacy</a> · <a href="#">Cookie</a></span>
+  </div>
+</footer>
+<script>
+(function(){
+  var b=document.getElementById('hbg');
+  var m=document.getElementById('mnav');
+  if(b&&m){
+    b.addEventListener('click',function(e){e.stopPropagation();m.classList.toggle('open');});
+    document.addEventListener('click',function(e){if(!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}});
+  }
+})();
+</script>
+</body>
+</html>
