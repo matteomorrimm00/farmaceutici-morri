@@ -546,6 +546,67 @@ footer {
 
 /* ─── REVEAL ─── */
 .reveal { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
+
+/* ─── RESPONSIVE MOBILE ─── */
+@media (max-width: 768px) {
+
+  nav { padding: 0 20px; height: 58px; }
+  .nav-links { display: none; }
+  .nav-right .btn-ghost { display: none; }
+  .btn-solid { padding: 0 14px; font-size: 12px; height: 34px; }
+  .logo-name { font-size: 17px; }
+
+  .hero { padding: 52px 24px 72px; }
+  .hero-title { font-size: 36px; }
+  .hero-sub { font-size: 14px; }
+
+  .wrap { padding: 0 20px; }
+  .sec { padding: 48px 0; }
+  .sec-title { font-size: 28px !important; }
+
+  /* Storia */
+  .storia-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .storia-img-placeholder { height: 260px; }
+  .storia-img { height: 260px; }
+
+  /* Numeri */
+  .numeri-strip { padding: 36px 20px; }
+  .numeri-grid { grid-template-columns: 1fr 1fr !important; }
+  .numero-val { font-size: 36px; }
+
+  /* Valori */
+  .valori-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+
+  /* Perché */
+  .perche-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .perche-quote { padding: 28px 24px; }
+  .perche-quote-text { font-size: 20px; }
+
+  /* Fondatore */
+  .fondatore-strip { padding: 36px 20px; }
+  .fondatore-inner { flex-direction: column; gap: 16px; padding: 24px 20px; }
+
+  /* Team */
+  .team-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+  /* Contatti */
+  .contatti-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+  /* Footer */
+  footer { padding: 40px 20px 20px; }
+  .foot-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .foot-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  nav { padding: 0 24px; }
+  .wrap { padding: 0 24px; }
+  .storia-grid { gap: 40px !important; }
+  .valori-grid { grid-template-columns: 1fr 1fr !important; }
+  .team-grid { grid-template-columns: 1fr 1fr 1fr !important; }
+  .numeri-grid { grid-template-columns: repeat(4, 1fr) !important; }
+  .foot-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
+}
 </style>
 </head>
 <body>

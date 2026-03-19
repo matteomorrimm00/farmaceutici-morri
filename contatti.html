@@ -439,6 +439,50 @@ footer { background: #141E28; padding: 56px 52px 28px; }
 
 /* ─── REVEAL ─── */
 .reveal { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
+
+/* ─── RESPONSIVE MOBILE ─── */
+@media (max-width: 768px) {
+
+  nav { padding: 0 20px; height: 58px; }
+  .nav-links { display: none; }
+  .nav-right .btn-ghost { display: none; }
+  .btn-solid { padding: 0 14px; font-size: 12px; height: 34px; }
+  .logo-name { font-size: 17px; }
+
+  .hero { padding: 52px 24px 72px; }
+  .hero-title { font-size: 34px; }
+  .hero-sub { font-size: 14px; }
+
+  .wrap { padding: 0 20px; }
+  .sec { padding: 48px 0; }
+  .sec-title { font-size: 28px !important; }
+
+  /* Form + Info */
+  .contact-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .form-card { padding: 24px 20px; }
+  .form-row { grid-template-columns: 1fr !important; }
+
+  /* Spedizioni */
+  .spedizioni-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* Pagamenti */
+  .pagamenti-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .reso-banner { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
+  .reso-left { flex-direction: column; text-align: center; }
+
+  /* Footer */
+  footer { padding: 40px 20px 20px; }
+  .foot-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .foot-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  nav { padding: 0 24px; }
+  .wrap { padding: 0 24px; }
+  .contact-grid { gap: 28px !important; }
+  .pagamenti-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .foot-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
+}
 </style>
 </head>
 <body>
